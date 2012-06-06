@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Ant Build" default="Compile">
+
+	<!-- 
+		The properties file
+		
+		Make sure that you rename the file called build.properties_EXAMPLE to build.properties
+		and modify the FLEX_HOME property so that it matches your Flex SDK path 
+	-->
+	<property file="build.properties" />
+	                              
+	<!-- points to our flexTasks.jar -->
+	<taskdef resource="flexTasks.tasks" classpath="${flex.tasks}"/>
+		
+	<target name="Compile">
+		<mxmlc file="${src.dir}/${main.class}" output="${deploy.dir}/${target.swf}">
+			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
+			<source-path path-element="${FLEX_HOME}/frameworks"/>
+			<compiler.source-path path-element="${src.dir}"/>
+			<compiler.library-path dir="${FLEX_HOME}/frameworks" append="true">
+				<include name="libs/*" />
+			</compiler.library-path>
+			<library-path dir="${libs.dir}" includes="*.swc" append="true"/>	         
+			<compiler.debug>true</compiler.debug>    
+			<static-link-runtime-shared-libraries>true</static-link-runtime-shared-libraries>
+		</mxmlc>	
+	</target>
+	
+	<target name="Docs">
+	    
+		<condition property="asdoc.jvm.args" value="-Xmx512m">
+	        <os family="windows"/>
+	    </condition>
+
+	    <condition property="asdoc.jvm.args" value="-Xmx1024m">
+	        <os family="mac"/>
+	    </condition>
+
+	    <condition property="asdoc.jvm.args" value="-Xmx512m">
+	        <os family="unix"/>
+	    </condition>		
+		
+		<asdoc output="${docs}" lenient="true" failonerror="true" warnings="false" strict="false" locale="en_US" fork="true">
+			<doc-sources path-element="${src.dir}" />
+		</asdoc>
+	</target>
+</project>
