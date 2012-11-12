@@ -3,7 +3,14 @@
     <head>
         <title>Application</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+        <style>
+          html, body {
+            padding: 0px;
+            margin: 0px;
+            height: 100%;
+            overflow:hidden;
+          }
+        </style>
         <script type="text/javascript" src="scripts/swfobject.js"></script>
         <script type="text/javascript">
             // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection.
@@ -17,12 +24,12 @@
             params.allowscriptaccess = "sameDomain";
             params.allowfullscreen = "true";
             var attributes = {};
-            attributes.id = "MP3 Ranges";
-            attributes.name = "MP3 Ranges";
+            attributes.id = "Application";
+            attributes.name = "Application";
             attributes.align = "middle";
             swfobject.embedSWF(
                 "application.swf", "flashContent",
-                "50", "50",
+                "100%", "100%",
                 swfVersionStr, xiSwfUrlStr,
                 flashvars, params, attributes);
             // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
