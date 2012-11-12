@@ -1,8 +1,9 @@
 package com.seventytwolions.projects.application {
-	import com.seventytwolions.utilities.logging.Log;
-	import flash.events.Event;
-	import com.seventytwolions.utilities.logging.MonsterDebuggerLogger;
-	import flash.display.Sprite;
+  import com.seventytwolions.utilities.logging.Log;
+  import com.seventytwolions.utilities.logging.MonsterDebuggerLogger;
+
+  import flash.display.Sprite;
+  import flash.events.Event;
 
 	/**
 	 * The main class that runs the app
